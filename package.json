@@ -1,0 +1,20 @@
+{
+  "name": "movie-file-ratings",
+  "version": "0.0.1",
+  "description": "An application which display IMDB ratings of movie files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gangadharjannu/movie-file-ratings.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gangadharjannu/movie-file-ratings/issues"
+  },
+  "homepage": "https://github.com/gangadharjannu/movie-file-ratings#readme"
+}
