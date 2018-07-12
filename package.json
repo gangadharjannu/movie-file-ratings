@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/gangadharjannu/movie-file-ratings/issues"
   },
-  "homepage": "https://github.com/gangadharjannu/movie-file-ratings#readme"
+  "homepage": "https://github.com/gangadharjannu/movie-file-ratings#readme",
+  "dependencies": {
+    "parse-torrent-name": "^0.5.4"
+  }
 }
