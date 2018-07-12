@@ -1,0 +1,8 @@
+* Library for parsing torrent name: return movie information from file names
+https://github.com/jzjzjzj/parse-torrent-name
+
+* extract movie title from file names (python): http://lazzyscientist.blogspot.com/2011/09/extracting-movie-title-from-torrent.html
+
+* initialize package.json with predefined answers: (No questions asked)
+https://docs.npmjs.com/cli/init  
+`npm init -y`
