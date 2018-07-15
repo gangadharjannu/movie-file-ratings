@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/gangadharjannu/movie-file-ratings#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "parse-torrent-name": "^0.5.4"
   }
 }
