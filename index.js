@@ -28,41 +28,49 @@ const generateDOM = (movies) => {
         console.log(`title:\t${a.title}\nyear:\t${a.release_date}\nrating:\t${a.vote_average}`)
     }).join('');
 };
-fs.readdir(movieDirPath, (err, contents) => {
-    const movieNames = contents
-        .map(item => ptn(item).title);
 
-    const movieNames$ = movieNames.map(movie => axios.get(`${TMDB_URL}${movie}`));
+const showFileMovieRatings = (selector) => {
+    fs.readdir(movieDirPath, (err, contents) => {
+        const movieNames = contents
+            .map(item => ptn(item).title);
+
+        const movieNames$ = movieNames.map(movie => axios.get(`${TMDB_URL}${movie}`));
 
 
-    axios.all(movieNames$)
-        .then(axios.spread(function (...args) {
-            const movieFileRatings = contents.map((item, idx) => {
-                return {
-                    fileName: item,
-                    movieName: ptn(item).title,
-                    imdbInfo: (args[idx].status === 200 && args[idx].data.total_results > 0) ? args[idx].data.results[0] : {}
+        axios.all(movieNames$)
+            .then(axios.spread(function (...args) {
+                const movieFileRatings = contents.map((item, idx) => {
+                    return {
+                        fileName: item,
+                        movieName: ptn(item).title,
+                        imdbInfo: (args[idx].status === 200 && args[idx].data.total_results > 0) ? args[idx].data.results[0] : {}
+                    }
+                });
+                console.log(generateDOM(movieFileRatings));
+                debugger;
+                document.getElementById(selector).innerHTML = generateDOM(movieFileRatings);
+            }))
+            .catch(error => {
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
                 }
+                console.log(error.config);
             });
-            console.log(args);
-            console.log(generateDOM(movieFileRatings));
-        }))
-        .catch(error => {
-            if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                console.log(error.response.data);
-                console.log(error.response.status);
-                console.log(error.response.headers);
-            } else if (error.request) {
-                // The request was made but no response was received
-                // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                // http.ClientRequest in node.js
-                console.log(error.request);
-            } else {
-                // Something happened in setting up the request that triggered an Error
-                console.log('Error', error.message);
-            }
-            console.log(error.config);
-        });
-});
+    });
+};
+
+module.exports = {
+    show:showFileMovieRatings
+};
