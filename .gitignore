@@ -1,3 +1,4 @@
 node_modules/
 movies/movieInfo.json
 creds.js
+.vscode
