@@ -21,7 +21,7 @@ const TMDB_URL = `http://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KE
 const generateDOM = (movies) => {
     return movies.map(movie => {
         return `<div>Filename:</div><div>${movie.fileName}</div>
-        <div>Movie:</div><div>${movie.imdbInfo.title||''}</div>
+        <div>Movie:</div><div>${movie.imdbInfo.title||movie.movieName||''}</div>
         <div>Rating:</div><div>${movie.imdbInfo.vote_average||''}</div>
         <div>Year:</div><div>${movie.imdbInfo.release_date||''}</div>
         `;
@@ -29,8 +29,9 @@ const generateDOM = (movies) => {
     }).join('');
 };
 
-const showFileMovieRatings = (selector) => {
-    fs.readdir(movieDirPath, (err, contents) => {
+const showFileMovieRatings = (directoryPath, selector) => {
+    debugger;
+    fs.readdir(directoryPath, (err, contents) => {
         const movieNames = contents
             .map(item => ptn(item).title);
 
