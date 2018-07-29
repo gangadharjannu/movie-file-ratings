@@ -1,27 +1,26 @@
-# MovieFileRatings
+# movie-file-ratings
+An application which display IMDB ratings of movie files.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.1.
+Problem:  
+Had to clean my hard disk and increase the free space.
+* Hard disk mostly contains copied/downloaded movies (1000+).
+* It is hard to delete each and every movie because I don't want to remove good movies (atleast considering IMDB rating >7)
+* I find it extermely difficult to select each file and get the movie name (because they are mostly downloaded from torrents) inorder to search in IMDB.
 
-## Development server
+Solution: 
+* A window which will display all files/folders from specified folder along with movie name and imdb rating
+* It will allows us to sort movies by imdb rating
+* It will allows to multi select and delete them.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Problem solving steps:  
+1. list folders/files
+2. extract movie names
+3. call IMDB service with given movie name and display rating.
 
-## Code scaffolding
+So the output would be something like this
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+| Files / Folders       | Movie Name        | IMDB Rating  |
+| -------------         |:-------------:    | -----:|
+| Atlantis BRRIP.2010   | Atlantis          | 6.7 |
+| Inception.2011.Xvid   | Inception         | 7.5 |
+| Ratatoui              | Ratatoui          | 9.3 |
