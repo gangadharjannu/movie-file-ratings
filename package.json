@@ -1,17 +1,19 @@
 {
   "name": "movie-file-ratings",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron-tsc": "tsc main.ts && ng build --base-href ./ && electron .",
+    "electron": "ng build --base-href ./ && electron ."
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^6.1.0",
     "@angular/common": "^6.1.0",
     "@angular/compiler": "^6.1.0",
     "@angular/core": "^6.1.0",
@@ -22,7 +24,10 @@
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.0.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "@angular/cdk": "^6.2.0",
+    "@angular/material": "^6.2.0",
+    "@angular/animations": "^6.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.7.0",
@@ -33,6 +38,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
+    "electron": "^2.0.5",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
